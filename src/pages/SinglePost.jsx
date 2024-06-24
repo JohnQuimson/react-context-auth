@@ -33,7 +33,6 @@ const SinglePost = () => {
       <p>Content: {post.content}</p>
       <p>Published: {post.published ? 'Yes' : 'No'}</p>
       <p>Tags: {post.tags.map((tag) => tag.name).join(', ')}</p>
-      {/* Visualizza altre informazioni del post */}
     </>
   );
 };
