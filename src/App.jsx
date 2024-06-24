@@ -19,8 +19,8 @@ import Login from './pages/Login';
 const App = () => {
   return (
     <>
-      <AuthProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
           <Routes>
             {/* Pubbliche */}
             <Route path="/" element={<DefaultLayout />}>
@@ -50,8 +50,8 @@ const App = () => {
               </Route>
             </Route>
           </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </>
   );
 };
