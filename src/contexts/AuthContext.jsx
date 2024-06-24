@@ -1,10 +1,20 @@
-import { Children, createContext, useContext } from 'react';
+import { Children, createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-const values = {};
-
 const AuthProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const login = (payload) => {};
+
+  const logout = () => {};
+
+  const values = {
+    isLoggedIn,
+    login,
+    logout,
+  };
+
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 

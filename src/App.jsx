@@ -7,11 +7,14 @@ import axios from 'axios';
 import Form from './components/Form';
 import ElencoPost from './components/ElencoPost';
 import Home from './pages/Home';
-import DefaultLayout from './pages/DefaultLayout';
+import DefaultLayout from './layouts/DefaultLayout';
 import SinglePost from './pages/SinglePost';
 import Posts from './pages/Posts';
 const apiUrl = import.meta.env.VITE_BASE_API_URL;
 import { AuthProvider } from './contexts/AuthContext';
+import DashboardLayout from './layouts/DashboardLayout';
+import PrivatePage from './middlewares/PrivatePage';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -19,10 +22,32 @@ const App = () => {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            {/* Pubbliche */}
             <Route path="/" element={<DefaultLayout />}>
               <Route index element={<Home />}></Route>
-              <Route path="posts" element={<Posts />}></Route>
-              <Route path="posts/:id" element={<SinglePost />}></Route>
+              <Route path="login" element={<Login />}></Route>
+              {/* <Route path="posts">
+                <Route index element={<Posts />} />
+                <Route path=":id">
+                  <Route index element={<SinglePost />} />
+                </Route>
+              </Route> */}
+            </Route>
+            {/* Private */}
+            <Route
+              path="/"
+              element={
+                <PrivatePage>
+                  <DefaultLayout />
+                </PrivatePage>
+              }
+            >
+              <Route path="posts">
+                <Route index element={<Posts />} />
+                <Route path=":id">
+                  <Route index element={<SinglePost />} />
+                </Route>
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>
