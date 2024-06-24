@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PostCard = ({ title, content, imageUrl, category, tags, status }) => {
+const PostCard = ({ title, content, imageUrl, category, tags, availble }) => {
   return (
     <>
-      {status ? (
+      {availble ? (
         <>
           <div className="article">
             {/* <h3>{title}</h3>
