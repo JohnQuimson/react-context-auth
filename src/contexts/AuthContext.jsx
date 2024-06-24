@@ -5,9 +5,13 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const login = (payload) => {};
+  const login = (payload) => {
+    setIsLoggedIn(true);
+  };
 
-  const logout = () => {};
+  const logout = () => {
+    setIsLoggedIn(false);
+  };
 
   const values = {
     isLoggedIn,
