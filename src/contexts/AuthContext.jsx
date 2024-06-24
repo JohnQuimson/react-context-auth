@@ -8,9 +8,9 @@ const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const login = (payload) => {
+  const login = (payload, redirectTo) => {
     setIsLoggedIn(true);
-    navigate('/');
+    navigate(redirectTo || '/');
   };
 
   const logout = () => {

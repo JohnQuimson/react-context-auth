@@ -1,11 +1,15 @@
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function () {
   const { login } = useAuth();
 
+  const { state } = useLocation();
+  const { redirectTo } = state || {};
+
   const handleLogin = (e) => {
     e.preventDefault();
-    login();
+    login(null, redirectTo || '');
   };
 
   return (
