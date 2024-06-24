@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const urlPages = [
   {
@@ -13,6 +14,8 @@ const urlPages = [
 ];
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth();
+
   return (
     <header>
       <nav className="navbar">
@@ -22,6 +25,11 @@ const Navbar = () => {
               <NavLink to={href}>{label}</NavLink>
             </li>
           ))}
+          {isLoggedIn && (
+            <li>
+              <button onClick={logout}>Logout</button>
+            </li>
+          )}
         </menu>
       </nav>
     </header>
